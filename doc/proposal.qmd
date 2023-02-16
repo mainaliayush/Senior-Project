@@ -1,8 +1,8 @@
 ---
-title: "Proposal: [Your project name]"
+title: "Proposal: Traffic Accident Analysis in The UK"
 subtitle: "DATA 450 Capstone"
-author: "[Your Name]"
-date: today
+author: "[Ayush Mainali]"
+date: 02/05/2023
 bibliography: references.bib
 number-sections: true
 format:
@@ -12,65 +12,97 @@ jupyter: python3
 
 # Introduction
 
-[This section should contain background and introduction to your general topic.]
+Road traffic accidents involving cars are a serious problem nowadays and one of the main sources of death and disability worldwide. Numerous people are injured or killed in car accidents every day, as well as experience emotional distress and financial losses. The issue has mostly been present in developing nations, where a lack of adequate traffic management, insufficient road infrastructure, and low levels of driver education all contribute to high accident rates.
+
+Although there are many different and intricate factors that can lead to car accidents, some of the more frequent ones are speeding, being distracted while driving, or driving while impaired by drugs or alcohol. For instance, reckless driving involves actions like blowing through red lights, making erroneous turns, and tailgating other cars. Meanwhile, driving while intoxicated makes it more difficult for a driver to respond quickly and make wise decisions, which raises the possibility of an accident. Speeding shortens a driver's reaction time and lengthens the distance needed to stop the car, which raises the probability of an accident. Accident risk can also rise as a result of distracted driving, such as using a cell phone while driving.
+
 
 # Dataset
 
-[In this section, desribe the dataset(s). This includes things like where you
-obtained the dataset. Include a full citation, as specified 
-[here](https://guides.lib.umich.edu/c.php?g=282964&p=3285995). Describe how the
-data was obtained by the data owner/curator, as best as you can. List the 
-variables that you plan to use in your analysis, for example:
+The dataset that I will be using will be "The Great Britain Road Accident 2005-2016" from Kaggle. Here is the link to the the dataset 
+ Include a full citation, as specified 
+[https://www.kaggle.com/datasets/nichaoku/gbaccident0516?select=acc2005_2016.csv] 
 
-* weight: The patient's weight (kg)
-* sex: The patient's sex, male or female
-* age: The patient's age (months)
+The dataset of the accident has two more sub datasets of Vehicle Description and Casualty Reference. The data was obtained from the UK government website [http://data.dft.gov.uk/road-accidents-safety-data/Road-Accident-Safety-Data-Guide.xls]. As well as giving details of date, time and location, the accident file gives a summary of all reported vehicles and pedestrians involved in road accidents and the total number of casualties, by severity. 
 
-]
+The variable that will be used in the analysis are as follows:
+
+i) latitude and longitude: The geographic location of the data where the accident occured.
+
+ii) Accident Severity: The casualty and damage severity of accident 
+
+iii) Accident Day: The day of the week most numbers of accident occured.
+
+iv) Accident Time: The time of the day accident occured.
+
+v) Speed zone: The speed limit roads most accidents we occuring. 
+
+vi) Vehicle: Type of vehicle resulting in most number of accidents- cars/SUVs/Trucks, Bus etc
+
+vii) Road Type: Type of road that saw most number of the accidents
+
+viii) Light Condition: The light outside when the accident occured. Morning sun, midday light, dawn, dusk etc
+
+ix) The gender of license holders: male, female, or others
+
+x) Age: The driver's age
+
+xi) Officers as scene: Number of police offices and local administratives that arrived in scene after the accident arrived.
+
+xii) Road Surface condition: Conditions such as wet, damp, dry etc
+
+xiii) Rural/Urban: Where the accident occured. Highly populated city or less populated rural areas
+
+
+
 
 # Data Acquisition and Processing
 
-[In this section, if applicable, describe how you will obtain the data (if it's
-anything more complicated than a simple download). Discuss what data 
-processing steps will be needed, such as recoding variables, data cleaning,
-data tidying, imputing missing values, etc. See sections 1c, 1d, 1e in the 
-"Good Enough Practices" paper.]
+The selected dataset has 1.7 million rows and 32 columns. There is a total of 7% null data and to fix this we will be using mean and media for quantitative and mode for qualitative data. Rows of absolute no use will be deleted when analysis is performed. The encoded values for variables such as light condition, road type will be mapped to their actual values instead of category numbers so that the visualization becomes more effective. 
+
+We have 9 variables of no use which we will be dropping. A plethora of variables have numerical symbols representing various conditions such as lighting, daytime, road conditions etc and they will be reverse encoded where numerical value will be changed. Impprtant data will be retrieved as efficiently as possibly. 
+
 
 # Research Questions and Methodology
 
-[In this section, list each of the questions you will explore. Following each
-question, provide a detailed and specific plan for how you plan to answer the 
-question. Include the specific steps you will take, what form the answer will 
-take (a number? table? visualization? model? Give all the specifics), and 
-estimate how many hours each question will take to complete.]
+1. Which day of the week has the most accident? We can create a barchart for all the days in the week where each bar will represent distinct day (like Sunday) in order to find out most accident occurance day.
 
-1. Is smoking correlated with diabetes? To answer this, I will create a filled
-bar plot, with the left bar representing non-smokers, the middle bar
-representing people who smoke moderately, and the right bar representing heavy
-smokers. The bars will be the same height, and each bar will be
-colored two colors based on the proportion of patients in the group who do or
-do not have diabetes.
+2. Which time of the day has the most accidents? We can plot a line graph for every 3hrs time interval where each bar will represent distinct time(like 6pm-9pm for evening) in order to find out in what time of the day do most accident occour. The MM-DD-YY will be filtered to just hours to plot the graph.
 
-2. Question 2? Plan for question 2.
 
-3. Question 3? Plan for question 3.
+3. What age group was mostly involved in accidents? Using the year of birth by filtering the DOB category from license details, we can figure out what age group is mostly involved in accident which in my understanding could be the age between 18-25. 
 
-4. etc.
+4. At what speed zones did most of the accidents occur ? Using histogram we can map continuous data and interpret the zones with most number of accidents.
+
+5. At what exact location in The UK are most accidents occuring? Using dot plot from plotly we can view some hotspots for accidents at different major cities. With most dots clustered around the major coordinates of the area, we will be also be analyse the data and report  number of severe casualties in that area
+
+6. What road types are causing most number of accidents? Barchart with frequency for accident severity can be mapped based on road type. We can use stacked bar to visualize severity(levels) and roadtypes. 
+
+7. What light conditions are causing most number of accidents? We will have multiple barchart with different colors that map the frequency for accident severity in accorance to the light condition.
+
+8. What is the corelation between accident factors? We will predict the severity of the accident based on features with high correlation and be using a heatmap for observing a correlation. What variable accounts to what kind of corelation can be figured using heat map.
+
+9. What gender have caused most number of accidents? Use pie chart and analyze the proportions. We will catergorize into male, female and unidentified  
+
+10. Boxplot the age group for different age severity. There will be 10 boxplots in total with a window of ten years for each group. 
+
+
 
 # Work plan
 
-[Fill in the list below with a plan for what you will do each week. You should
-have around 7 hours worth of work each week. Writing work counts. Several tasks
-have already been filled in for you.]
 
 **Week 4 (2/6 - 2/12):** [Just an example: 
 
 * Data tidying and recoding (4 hours)
-* Question 2 (4 hours).]
+* Question 1 and 2 (4 hours).]
 
 **Week 5 (2/13 - 2/19):**
 
+* Data Visualizations for research questions and methodology listed above.(7 hr)
+
 **Week 6 (2/20 - 2/26):**
+
+* Machine Learning - Logistic Regression, KNN and Random Forest (7 hr)
 
 **Week 7 (2/27 - 3/5):**
 
@@ -98,6 +130,8 @@ have already been filled in for you.]
 
 **Week 12 (4/10 - 4/16):**
 
+* Overall revision. 
+
 **Week 13 (4/17 - 4/23):** [All project work should be done by the end of this 
 week. The remaining time will be used for writing up and presenting your 
 results.]
@@ -121,37 +155,11 @@ Monday May 9th 3:20-6:40pm.* [Do not schedule any other tasks for this week.]
 
 ## Some cool Quarto stuff
 
-[You can delete this section from your proposal.]
-
-For your reference, here's an example of a Python code cell in Quarto,
-along with a figure that gets generated, along with a caption and a label
-so that it can be referred to automatically as "Figure 1" (or whatever)
-in the writeup.
-
-For a demonstration of a line plot on a polar axis, see @fig-polar.
-
-```{python}
-#| label: fig-polar
-#| fig-cap: "A line plot on a polar axis"
-
-import numpy as np
-import matplotlib.pyplot as plt
-
-r = np.arange(0, 2, 0.01)
-theta = 2 * np.pi * r
-fig, ax = plt.subplots(
-  subplot_kw = {'projection': 'polar'} 
-)
-ax.plot(theta, r)
-ax.set_rticks([0.5, 1, 1.5, 2])
-ax.grid(True)
-plt.show()
-```
-
-Here's an example of citing a source [see @phil99, pp. 33-35]. Be sure the source information is entered in "BibTeX" form in the `references.bib` file.
 
 # References
 
-[The bibliography will automatically get generated. Any sources you
-cite in the document will be included. Other entries in the `.bib` file
-will not be included.]
+https://data.gov.uk/dataset/road-accidents-safety-data
+
+https://www.kaggle.com/datasets/silicon99/dft-accident-data
+
+https://data.dft.gov.uk/road-accidents-safety-dataRoad-Accident-Safety-Data-Guide.xls
