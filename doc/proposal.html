@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.313">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="[Ayush Mainali]">
+<meta name="dcterms.date" content="2023-02-05">
+
+<title>Proposal: Traffic Accident Analysis in The UK</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="proposal_files/libs/clipboard/clipboard.min.js"></script>
+<script src="proposal_files/libs/quarto-html/quarto.js"></script>
+<script src="proposal_files/libs/quarto-html/popper.min.js"></script>
+<script src="proposal_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="proposal_files/libs/quarto-html/anchor.min.js"></script>
+<link href="proposal_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="proposal_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="proposal_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="proposal_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="proposal_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Proposal: Traffic Accident Analysis in The UK</h1>
+<p class="subtitle lead">DATA 450 Capstone</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>[Ayush Mainali] </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 5, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
+<p>Road traffic accidents involving cars are a serious problem nowadays and one of the main sources of death and disability worldwide. Numerous people are injured or killed in car accidents every day, as well as experience emotional distress and financial losses. The issue has mostly been present in developing nations, where a lack of adequate traffic management, insufficient road infrastructure, and low levels of driver education all contribute to high accident rates.</p>
+<p>Although there are many different and intricate factors that can lead to car accidents, some of the more frequent ones are speeding, being distracted while driving, or driving while impaired by drugs or alcohol. For instance, reckless driving involves actions like blowing through red lights, making erroneous turns, and tailgating other cars. Meanwhile, driving while intoxicated makes it more difficult for a driver to respond quickly and make wise decisions, which raises the possibility of an accident. Speeding shortens a driver’s reaction time and lengthens the distance needed to stop the car, which raises the probability of an accident. Accident risk can also rise as a result of distracted driving, such as using a cell phone while driving.</p>
+</section>
+<section id="dataset" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Dataset</h1>
+<p>The dataset that I will be using will be “The Great Britain Road Accident 2005-2016” from Kaggle. Here is the link to the the dataset Include a full citation, as specified [https://www.kaggle.com/datasets/nichaoku/gbaccident0516?select=acc2005_2016.csv]</p>
+<p>The dataset of the accident has two more sub datasets of Vehicle Description and Casualty Reference. The data was obtained from the UK government website [http://data.dft.gov.uk/road-accidents-safety-data/Road-Accident-Safety-Data-Guide.xls]. As well as giving details of date, time and location, the accident file gives a summary of all reported vehicles and pedestrians involved in road accidents and the total number of casualties, by severity.</p>
+<p>The variable that will be used in the analysis are as follows:</p>
+<ol type="i">
+<li><p>latitude and longitude: The geographic location of the data where the accident occured.</p></li>
+<li><p>Accident Severity: The casualty and damage severity of accident</p></li>
+<li><p>Accident Day: The day of the week most numbers of accident occured.</p></li>
+<li><p>Accident Time: The time of the day accident occured.</p></li>
+<li><p>Speed zone: The speed limit roads most accidents we occuring.</p></li>
+<li><p>Vehicle: Type of vehicle resulting in most number of accidents- cars/SUVs/Trucks, Bus etc</p></li>
+<li><p>Road Type: Type of road that saw most number of the accidents</p></li>
+<li><p>Light Condition: The light outside when the accident occured. Morning sun, midday light, dawn, dusk etc</p></li>
+<li><p>The gender of license holders: male, female, or others</p></li>
+<li><p>Age: The driver’s age</p></li>
+<li><p>Officers as scene: Number of police offices and local administratives that arrived in scene after the accident arrived.</p></li>
+<li><p>Road Surface condition: Conditions such as wet, damp, dry etc</p></li>
+<li><p>Rural/Urban: Where the accident occured. Highly populated city or less populated rural areas</p></li>
+</ol>
+</section>
+<section id="data-acquisition-and-processing" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Data Acquisition and Processing</h1>
+<p>The selected dataset has 1.7 million rows and 32 columns. There is a total of 7% null data and to fix this we will be using mean and media for quantitative and mode for qualitative data. Rows of absolute no use will be deleted when analysis is performed. The encoded values for variables such as light condition, road type will be mapped to their actual values instead of category numbers so that the visualization becomes more effective.</p>
+<p>We have 9 variables of no use which we will be dropping. A plethora of variables have numerical symbols representing various conditions such as lighting, daytime, road conditions etc and they will be reverse encoded where numerical value will be changed. Impprtant data will be retrieved as efficiently as possibly.</p>
+</section>
+<section id="research-questions-and-methodology" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Research Questions and Methodology</h1>
+<ol type="1">
+<li><p>Which day of the week has the most accident? We can create a barchart for all the days in the week where each bar will represent distinct day (like Sunday) in order to find out most accident occurance day.</p></li>
+<li><p>Which time of the day has the most accidents? We can plot a line graph for every 3hrs time interval where each bar will represent distinct time(like 6pm-9pm for evening) in order to find out in what time of the day do most accident occour. The MM-DD-YY will be filtered to just hours to plot the graph.</p></li>
+<li><p>What age group was mostly involved in accidents? Using the year of birth by filtering the DOB category from license details, we can figure out what age group is mostly involved in accident which in my understanding could be the age between 18-25.</p></li>
+<li><p>At what speed zones did most of the accidents occur ? Using histogram we can map continuous data and interpret the zones with most number of accidents.</p></li>
+<li><p>At what exact location in The UK are most accidents occuring? Using dot plot from plotly we can view some hotspots for accidents at different major cities. With most dots clustered around the major coordinates of the area, we will be also be analyse the data and report number of severe casualties in that area</p></li>
+<li><p>What road types are causing most number of accidents? Barchart with frequency for accident severity can be mapped based on road type. We can use stacked bar to visualize severity(levels) and roadtypes.</p></li>
+<li><p>What light conditions are causing most number of accidents? We will have multiple barchart with different colors that map the frequency for accident severity in accorance to the light condition.</p></li>
+<li><p>What is the corelation between accident factors? We will predict the severity of the accident based on features with high correlation and be using a heatmap for observing a correlation. What variable accounts to what kind of corelation can be figured using heat map.</p></li>
+<li><p>What gender have caused most number of accidents? Use pie chart and analyze the proportions. We will catergorize into male, female and unidentified</p></li>
+<li><p>Boxplot the age group for different age severity. There will be 10 boxplots in total with a window of ten years for each group.</p></li>
+</ol>
+</section>
+<section id="work-plan" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Work plan</h1>
+<p><strong>Week 4 (2/6 - 2/12):</strong> [Just an example:</p>
+<ul>
+<li>Data tidying, filtering based on null values and recoding variables which could be easily understandable.</li>
+<li>Analyzed the number of accidents by hour of the day marking the peak hours using annotation feature.</li>
+<li>Constructed a bar graph that shows what day of the week most accidents are occuring.</li>
+</ul>
+<p>Total Hours: 8 hrs</p>
+<p><strong>Week 5 (2/13 - 2/19):</strong></p>
+<ul>
+<li>Analyzing the number of accidents based on the road speed limit.</li>
+<li>Created three different subplots - number of accidents in each hour, month and year.</li>
+<li>Started working on another dataset “casualties.csv” and filtered out the null values.</li>
+<li>Seperated the ages in the casualties file into age ranges with range 10.</li>
+<li>Plotted a histogram showcasing the casualties per each age group.</li>
+</ul>
+<p><strong>Week 6 (2/20 - 2/26):</strong></p>
+<ul>
+<li>Continued working with the casualties dataset.</li>
+<li>Further subdivided the casualties by age, categorizing by gender(M,F and O) and plotted a density line graph.</li>
+<li>Constructed a boxplot to show the distribution of the age group in caualties and to analyze how the data is skewed.</li>
+<li>Using the basmap toolkit, imported a plain map of UK and plotted scatterplots using the longitude and latitude that showd number of accidents all over UK.</li>
+<li>Started working on some pie charts based on conditions such as weather, light condition, road type etc.</li>
+</ul>
+<p><strong>Week 7 (2/27 - 3/5):</strong></p>
+<ul>
+<li>More data analysis and visualization coming soon.</li>
+<li>Presentation prep and practice (4 hours)</li>
+</ul>
+<p><strong>Week 8 (3/6 - 3/12):</strong> <em>Presentations in class on Thurs 3/9.</em></p>
+<ul>
+<li>Presentation peer review (1.5 hours)</li>
+</ul>
+<p><strong>Week 9 (3/20 - 3/26):</strong></p>
+<ul>
+<li>Poster prep (4 hours)</li>
+</ul>
+<p><strong>Week 10 (3/27 - 4/2):</strong> <em>Poster Draft 1 due Monday 3/27</em>. <em>Peer feedback due Thursday 3/30</em>.</p>
+<ul>
+<li><p>Peer feedback (2.5 hours)</p></li>
+<li><p>Poster revisions (2 hours)</p></li>
+</ul>
+<p><strong>Week 11 (4/3 - 4/9):</strong> <em>Poster Draft 2 due Monday 4/3</em>. <em>Final Poster due Saturday 4/8</em>.</p>
+<ul>
+<li>Poster revisions (1 hour).</li>
+</ul>
+<p><strong>Week 12 (4/10 - 4/16):</strong></p>
+<ul>
+<li>Overall revision.</li>
+</ul>
+<p><strong>Week 13 (4/17 - 4/23):</strong> [All project work should be done by the end of this week. The remaining time will be used for writing up and presenting your results.]</p>
+<ul>
+<li>Draft blog post (5 hours).</li>
+</ul>
+<p><strong>Week 14 (4/24 - 4/30):</strong> <em>Blog post draft 1 due Monday 4/24. Peer feedback due Thursday 4/27. Blog post draft 2 due Sunday 4/30</em>.</p>
+<ul>
+<li>Peer feedback (2.5 hours)</li>
+<li>Blog post revisions (2 hours)</li>
+<li>[Do not schedule any other tasks for this week.]</li>
+</ul>
+<p><strong>Week 15 (5/1 - 5/7):</strong> <em>Final blog post due Tuesday 5/2</em>.</p>
+<ul>
+<li><p>Final presentation prep and practice.</p></li>
+<li><p>[Do not schedule any other tasks for this week.]</p></li>
+</ul>
+<p><strong>Final Exam Week (5/8):</strong> <em>Final Presentations during final exam slot, Monday May 9th 3:20-6:40pm.</em> [Do not schedule any other tasks for this week.]</p>
+<section id="some-cool-quarto-stuff" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="some-cool-quarto-stuff"><span class="header-section-number">5.1</span> Some cool Quarto stuff</h2>
+</section>
+</section>
+<section id="references" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> References</h1>
+<p>https://data.gov.uk/dataset/road-accidents-safety-data</p>
+<p>https://www.kaggle.com/datasets/silicon99/dft-accident-data</p>
+<p>https://data.dft.gov.uk/road-accidents-safety-dataRoad-Accident-Safety-Data-Guide.xls</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

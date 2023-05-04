@@ -87,25 +87,36 @@ We have 9 variables of no use which we will be dropping. A plethora of variables
 10. Boxplot the age group for different age severity. There will be 10 boxplots in total with a window of ten years for each group. 
 
 
-
 # Work plan
 
 
 **Week 4 (2/6 - 2/12):** [Just an example: 
 
-* Data tidying and recoding (4 hours)
-* Question 1 and 2 (4 hours).]
+* Data tidying, filtering based on null values and recoding variables which could be easily understandable. 
+* Analyzed the number of accidents by hour of the day marking the peak hours using annotation feature.
+* Constructed a bar graph that shows what day of the week most accidents are occuring.
+
+Total Hours: 8 hrs
 
 **Week 5 (2/13 - 2/19):**
 
-* Data Visualizations for research questions and methodology listed above.(7 hr)
+* Analyzing the number of accidents based on the road speed limit.
+* Created three different subplots - number of accidents in each hour, month and year.
+* Started working on another dataset "casualties.csv" and filtered out the null values.
+* Seperated the ages in the casualties file into age ranges with range 10.
+* Plotted a histogram showcasing the casualties per each age group.
 
 **Week 6 (2/20 - 2/26):**
 
-* Machine Learning - Logistic Regression, KNN and Random Forest (7 hr)
+* Continued working with the casualties dataset.
+* Further subdivided the casualties by age, categorizing by gender(M,F and O) and plotted a density line graph.
+* Constructed a boxplot to show the distribution of the age group in caualties and to analyze how the data is skewed.
+* Using the basmap toolkit, imported a plain map of UK and plotted scatterplots using the longitude and latitude that showd number of accidents all over UK.
+* Started working on some pie charts based on conditions such as weather, light condition, road type etc.  
 
 **Week 7 (2/27 - 3/5):**
 
+* More data analysis and visualization coming soon.
 * Presentation prep and practice (4 hours)
 
 **Week 8 (3/6 - 3/12):** *Presentations in class on Thurs 3/9.*
